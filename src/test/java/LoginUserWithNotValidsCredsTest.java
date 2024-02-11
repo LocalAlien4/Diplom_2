@@ -45,7 +45,7 @@ public class LoginUserWithNotValidsCredsTest {
     @Description("Проверка авторизации пользователя с несуществующими email и пароль, а так же при пустых полях")
     public void loginNotValidCredsUser(){
         User user = randomUser();
-        Response response = userClient.login(fromUser(user));
+        Response response = userClient.loginUser(fromUser(user));
         response.then().assertThat().statusCode(SC_UNAUTHORIZED)
                 .and().assertThat().body("message", equalTo("email or password are incorrect"));
     }

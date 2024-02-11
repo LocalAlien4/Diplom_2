@@ -7,9 +7,11 @@ public class User {
     public String getEmail() {
         return email;
     }
+
     public String getPassword() {
         return password;
     }
+
     public User withEmail(String email) {
         this.email = email;
         return this;
@@ -36,5 +38,4 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
-
 }

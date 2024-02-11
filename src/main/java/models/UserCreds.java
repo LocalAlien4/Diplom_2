@@ -1,14 +1,17 @@
 package models;
 
 public class UserCreds {
-    private final String email;
-    private final String password;
+    protected String email;
+    private String password;
+    protected String name;
 
     public UserCreds(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
+    public UserCreds() {
+    }
     public static UserCreds fromUser(User user) {
         return new UserCreds(user.getEmail(), user.getPassword());
     }

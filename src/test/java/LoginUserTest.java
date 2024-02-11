@@ -27,7 +27,7 @@ public class LoginUserTest {
     public void loginCorrectUser(){
         User user = randomUser();
         userClient.createUser(user);
-        Response response = userClient.login(fromUser(user));
+        Response response = userClient.loginUser(fromUser(user));
                 response.then().assertThat().statusCode(SC_OK)
                 .and().assertThat().body("success", equalTo(true));
         token = response.path("accessToken");
