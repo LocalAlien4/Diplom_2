@@ -51,6 +51,7 @@ public Response changeInfoUser(String token, NewUserCreds newCreds) {
 public Response deleteUser(String token){
     return given()
             .header("Authorization", token)
+            .contentType("application/json")
             .when()
             .delete(USER_URL);
     }

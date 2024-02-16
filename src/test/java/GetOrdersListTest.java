@@ -5,13 +5,9 @@ import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import models.Constants;
-import models.Order;
 import models.User;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static models.UserData.randomUser;
 import static org.apache.http.HttpStatus.*;

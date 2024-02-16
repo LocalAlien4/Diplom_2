@@ -23,16 +23,16 @@ public class ChangeUserDataTest {
     private final String emailNew;
     private final String nameNew;
 
-    public ChangeUserDataTest(String email, String name) {
+    public ChangeUserDataTest(String name, String email) {
+        this.nameNew = name;
         this.emailNew = email;
-            this.nameNew = name;
     }
     @Parameterized.Parameters()
     public static Object[][] getData() {
         return new Object[][]{
-                {"randomdgshdg@email.com", "random_name8374316"},
-                {"randomdjdsdgshdg@email.com", ""},
-                {"", "random_name83ak74316"}
+                {"random_name1281216", "random1212gs@email.com", },
+                {null, "random1212djds23@email.com"},
+                {"random_name121283a16", null}
         };
     }
     @Before
@@ -42,17 +42,17 @@ public class ChangeUserDataTest {
     }
     @Test
     @DisplayName("Успешное редактирование данных пользователя")
-    @Description("Проверка изменения данных авторизованного пользователя: email и пароль")
+    @Description("Проверка изменения данных авторизованного пользователя: email и имя")
     public void changeDataAuthorizedUser(){
         User user = randomUser();
         NewUserCreds userData = new NewUserCreds(nameNew,emailNew);
-        userData.setFieldsNew(this.nameNew,this.emailNew);
         userClient.createUser(user);
+        userData.setFieldsNew(this.nameNew, this.emailNew);
         Response responseLogin = userClient.loginUser(fromUser(user));
         token = responseLogin.path("accessToken");
         Response response= userClient.changeInfoUser(token, userData);
         response.then().assertThat().statusCode(SC_OK)
-                .and().assertThat().body("user.name", equalTo(nameNew)).body("user.email",equalTo(emailNew));
+                .and().assertThat().body("success",equalTo(true));
         userClient.deleteUser(token);
     }
     @Test

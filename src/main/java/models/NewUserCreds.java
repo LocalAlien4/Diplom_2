@@ -13,7 +13,6 @@ public class NewUserCreds extends UserCreds{
         this.name = name;
         this.email =email;
     }
-
     @Override
     public String toString() {
         return "NewUserCreds{" +

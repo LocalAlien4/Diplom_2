@@ -12,6 +12,10 @@ public class UserCreds {
 
     public UserCreds() {
     }
+    public void setEmailAndPass(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
     public static UserCreds fromUser(User user) {
         return new UserCreds(user.getEmail(), user.getPassword());
     }
