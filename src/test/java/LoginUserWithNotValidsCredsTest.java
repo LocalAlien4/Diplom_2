@@ -45,7 +45,6 @@ public class LoginUserWithNotValidsCredsTest {
     public void loginNotValidCredsUser(){
         UserCreds user = UserCreds.fromUser(randomUser());
         user.setEmailAndPass(this.email,this.password);
-        System.out.println(user);
         Response response = userClient.loginUser(user);
         response.then().assertThat().statusCode(SC_UNAUTHORIZED)
                 .and().assertThat().body("message", equalTo("email or password are incorrect"));
